@@ -25,6 +25,11 @@ jobs:
         if: always()
         run: |
           make down
+      - name: coverage
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./coverage1.out
+
   go-client-ssl:
     runs-on: ubuntu-latest
     steps:

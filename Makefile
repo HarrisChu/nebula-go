@@ -8,7 +8,7 @@ build: fmt
 
 test:
 	go mod tidy
-	go test -v -race
+	go test -v -race -coverprofile=coverage_1.out -covermode=atomic
 
 fmt:
 	go fmt
@@ -22,13 +22,13 @@ down:
 	cd ./nebula-docker-compose && docker-compose down -v
 
 ssl-test:
-	ssl_test=true go test -v -run TestSslConnection;
+	ssl_test=true go test -v -run TestSslConnection -race -coverprofile=coverage2.out -covermode=atomic;
 
 ssl-test-self-signed:
 	cd ./nebula-docker-compose && enable_ssl=true docker-compose up -d && \
 	sleep 10 && \
 	cd .. && \
-	self_signed=true go test -v -run TestSslConnection;
+	self_signed=true go test -v -run TestSslConnection -race -coverprofile=coverage3.out -covermode=atomic;
 
 run-examples:
 	go run basic_example/graph_client_basic_example.go && \
