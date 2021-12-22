@@ -8,7 +8,7 @@ build: fmt
 
 test:
 	go mod tidy
-	go test -v -race -coverprofile=coverage_1.out -covermode=atomic
+	go test -v -race -coverprofile=coverage1.out -covermode=atomic
 
 fmt:
 	go fmt
